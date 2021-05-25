@@ -1,0 +1,96 @@
+<Page x:Class="uno_error.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:uno_error"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:viewModels="using:uno_error.ViewModels"
+      xmlns:controls="using:uno_error.Controls"
+      mc:Ignorable="d"
+      >
+    <Page.Resources>
+        <DataTemplate x:DataType="viewModels:TextInputViewModel" x:Key="TextInputContent">
+            <StackPanel>
+                <TextBlock Text="{Binding Question, Mode=OneWay}" Style="{ThemeResource SubheaderTextBlockStyle}" />
+                <TextBox Text="{Binding Answer, Mode=TwoWay}" />
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0" 
+                BorderThickness="0,0,0,2" 
+                Padding="0"
+                BorderBrush="{ThemeResource SystemChromeWhiteColor}"
+                Background="{ThemeResource ListViewItemPointerOverBackgroundThemeBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <MenuBar Grid.Row="0" Grid.Column="0" Foreground="{ThemeResource AppBarItemForegroundThemeBrush}">
+                    <MenuBar.Items>
+                        <MenuBarItem Title="File">
+                            <MenuBarItem.Items>
+                                <MenuFlyoutItem Command="{x:Bind ViewModel.Commands.NewProject}"
+                                        CommandParameter="{x:Bind ViewModel, Mode=OneWay}" Text="New Project">
+                                    <MenuFlyoutItem.KeyboardAccelerators>
+                                        <KeyboardAccelerator Key="N" Modifiers="Control" />
+                                    </MenuFlyoutItem.KeyboardAccelerators>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutItem Command="{x:Bind ViewModel.Commands.OpenProject}"
+                                        CommandParameter="{x:Bind ViewModel, Mode=OneWay}" Text="Open Project">
+                                    <MenuFlyoutItem.KeyboardAccelerators>
+                                        <KeyboardAccelerator Key="O" Modifiers="Control" />
+                                    </MenuFlyoutItem.KeyboardAccelerators>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutItem Command="{x:Bind ViewModel.Commands.SaveProject}"
+                                        CommandParameter="{x:Bind ViewModel.Project, Mode=OneWay}" Text="Save Project">
+                                    <MenuFlyoutItem.KeyboardAccelerators>
+                                        <KeyboardAccelerator Key="S" Modifiers="Control" />
+                                    </MenuFlyoutItem.KeyboardAccelerators>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutItem Command="{x:Bind ViewModel.Commands.CloseProject}"
+                                        CommandParameter="{x:Bind ViewModel.Project, Mode=OneWay}" Text="Close Project">
+                                    <MenuFlyoutItem.KeyboardAccelerators>
+                                        <KeyboardAccelerator Key="F4" Modifiers="Control" />
+                                    </MenuFlyoutItem.KeyboardAccelerators>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutSeparator />
+                                <MenuFlyoutItem Command="{x:Bind ViewModel.Commands.Exit}"
+                                        CommandParameter="{x:Bind ViewModel.Project, Mode=OneWay}" Text="Exit">
+                                    <MenuFlyoutItem.KeyboardAccelerators>
+                                        <KeyboardAccelerator Key="F4" Modifiers="Menu" />
+                                    </MenuFlyoutItem.KeyboardAccelerators>
+                                </MenuFlyoutItem>
+                            </MenuBarItem.Items>
+                        </MenuBarItem>
+                        <MenuBarItem x:Name="mnuAssemblies" Title="Assemblies">
+                            <MenuBarItem.Items>
+                                <MenuFlyoutItem Command="{x:Bind ViewModel.Commands.AddAssembly}"
+                                        CommandParameter="{x:Bind ViewModel.Project, Mode=OneWay}" Text="Add Assembly">
+                                    <MenuFlyoutItem.KeyboardAccelerators>
+                                        <KeyboardAccelerator Key="A" Modifiers="Control" />
+                                    </MenuFlyoutItem.KeyboardAccelerators>
+                                </MenuFlyoutItem>
+                                <MenuFlyoutSeparator />
+                            </MenuBarItem.Items>
+                        </MenuBarItem>
+                        <MenuBarItem Title="Help">
+                        </MenuBarItem>
+                    </MenuBar.Items>
+                </MenuBar>
+                <controls:PowerBar Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Center"
+                        HorizontalContentAlignment="Right" Padding="4, 2, 4, 2" />
+            </Grid>
+        </Border>
+    </Grid>
+</Page>
