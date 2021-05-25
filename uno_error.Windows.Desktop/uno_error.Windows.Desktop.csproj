@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net5.0-windows10.0.19041</TargetFramework>
+        <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+        <RootNamespace>uno_error</RootNamespace>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <Platforms>x86;x64</Platforms>
+        <RuntimeIdentifiers>win-x64;win10-x86;win10-x64</RuntimeIdentifiers>
+        <AssemblyVersion>2021.0516.1.31568</AssemblyVersion>
+        <FileVersion>2021.0516.1.31568</FileVersion>
+        <LangVersion>Preview</LangVersion>
+        <StartupObject>uno_error.Program</StartupObject>
+        <NeutralLanguage>en</NeutralLanguage>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+        <PackageReference Include="Microsoft.ProjectReunion" Version="0.5.7" />
+        <PackageReference Include="Microsoft.ProjectReunion.Foundation" Version="0.5.7" />
+        <PackageReference Include="Microsoft.ProjectReunion.WinUI" Version="0.5.7" />
+        <Manifest Include="$(ApplicationManifest)" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
+        <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.0.2" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+        <PackageReference Include="PlantUml.Reflector" Version="2021.514.0.42598" />
+        <PackageReference Include="Uno.Core" Version="2.3.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" RuntimeFrameworkVersion="10.0.18362.16" />
+        <FrameworkReference Update="Microsoft.Windows.SDK.NET.Ref" TargetingPackVersion="10.0.18362.16" />
+    </ItemGroup>
+    <Import Project="..\uno_error.Shared\uno_error.Shared.projitems" Label="Shared" />
+</Project>

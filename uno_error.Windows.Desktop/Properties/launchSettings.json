@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "uno_error.Windows.Desktop": {
+      "commandName": "Project"
+    }
+  }
+}
